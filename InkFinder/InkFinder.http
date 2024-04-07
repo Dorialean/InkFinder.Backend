@@ -1,0 +1,6 @@
+@InkFinder_HostAddress = http://localhost:5271
+
+GET {{InkFinder_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
