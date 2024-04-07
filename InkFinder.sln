@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InkFinder", "InkFinder\InkFinder.csproj", "{D3D46432-0E9C-4703-BCEB-CE382D96E2B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InkFinder", "InkFinder\InkFinder.csproj", "{D3D46432-0E9C-4703-BCEB-CE382D96E2B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InkFinder.DAL", "InkFinder.DAL\InkFinder.DAL.csproj", "{767EFFCD-CCAC-450D-BBE9-330E4A12A94E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InkFinder.Domain", "InkFinder.Domain\InkFinder.Domain.csproj", "{4E4A28C7-B8DE-4AEB-A84F-F2C79E7E737C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{D3D46432-0E9C-4703-BCEB-CE382D96E2B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3D46432-0E9C-4703-BCEB-CE382D96E2B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3D46432-0E9C-4703-BCEB-CE382D96E2B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{767EFFCD-CCAC-450D-BBE9-330E4A12A94E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{767EFFCD-CCAC-450D-BBE9-330E4A12A94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{767EFFCD-CCAC-450D-BBE9-330E4A12A94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{767EFFCD-CCAC-450D-BBE9-330E4A12A94E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E4A28C7-B8DE-4AEB-A84F-F2C79E7E737C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E4A28C7-B8DE-4AEB-A84F-F2C79E7E737C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E4A28C7-B8DE-4AEB-A84F-F2C79E7E737C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E4A28C7-B8DE-4AEB-A84F-F2C79E7E737C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
