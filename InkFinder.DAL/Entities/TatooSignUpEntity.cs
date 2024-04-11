@@ -10,12 +10,12 @@ public class TatooSignUpEntity
     public int Id { get; set; }
 
     [ForeignKey("Master")]
-    public Guid? MasterId { get; set; }
+    public string? MasterId { get; set; }
     public virtual UserEntity? Master { get; set; }
 
     [Required]
     [ForeignKey("Participant")]
-    public Guid ParticipantId { get; set; }
+    public string ParticipantId { get; set; } = null!;
     public virtual UserEntity Participant { get; set; } = null!;
 
     [Required]

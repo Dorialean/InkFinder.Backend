@@ -1,13 +1,12 @@
 ﻿using InkFinder.DAL.Constants.Enums;
 using InkFinder.DAL.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace InkFinder.DAL.Context;
 
-public class InkFinderContext : DbContext
+public class InkFinderContext(DbContextOptions<InkFinderContext> options) : IdentityDbContext<UserEntity>(options)
 {
-    public InkFinderContext(DbContextOptions options) : base(options) { }
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => base.OnConfiguring(optionsBuilder);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -21,50 +20,11 @@ public class InkFinderContext : DbContext
         {
             entity.HasKey(sheet => sheet.Id);
             entity.Property(sheet => sheet.Id).ValueGeneratedOnAdd();
+            entity.Property(sheet => sheet.UserId)
+                .ValueGeneratedNever();
             entity.HasOne(sheet => sheet.User)
                 .WithMany(user => user.WorkSheets)
                 .HasForeignKey(sheet => sheet.UserId);
-        });
-        modelBuilder.Entity<RoleEntity>(entity =>
-        {
-            entity.HasKey(role => role.Id);
-            entity.Property(role => role.Id).ValueGeneratedOnAdd();
-            entity.HasIndex(role => role.Name).IsUnique();
-            var roles = new List<RoleEntity>()
-            {
-                new()
-                {
-                    Id = new Guid("b8cb9bf8-d585-43f1-be49-884005af78a8"),
-                    Name = RolesEnum.PARTICIPANT.ToString(),
-                },
-                new()
-                {
-                    Id = new Guid("64a84203-88bb-46b4-a57c-36d673686343"),
-                    Name = RolesEnum.MASTER.ToString(),
-                },
-                new()
-                {
-                    Id = new Guid("544384bd-9e78-43ff-9e7b-514cb553b6d9"),
-                    Name = RolesEnum.ADMIN.ToString(),
-                }
-            };
-            entity.HasData(roles);
-        });
-        modelBuilder.Entity<UserToRoleRelation>(relation =>
-        {
-            relation.HasKey(relation => new
-            {
-                relation.UserId,
-                relation.RoleId
-            });
-            relation.Property(relation => relation.UserId).ValueGeneratedNever();
-            relation.Property(relation => relation.RoleId).ValueGeneratedNever();
-            relation.HasOne(relation => relation.User)
-                .WithMany(user => user.UserToRoleRelations)
-                .HasForeignKey(relation => relation.UserId);
-            relation.HasOne(relation => relation.Role)
-                .WithMany(role => role.UserToRoleRelations)
-                .HasForeignKey(relation => relation.RoleId);
         });
         modelBuilder.Entity<TatooServiceEntity>(entity =>
         {
@@ -157,7 +117,8 @@ public class InkFinderContext : DbContext
         {
             entity.HasKey(artwork => artwork.Id);
             entity.Property(artwork => artwork.Id).ValueGeneratedOnAdd();
-            entity.Property(artwork => artwork.CreatorId).ValueGeneratedNever();
+            entity.Property(artwork => artwork.CreatorId)
+                .ValueGeneratedNever();
             entity.HasIndex(artwork => artwork.Name).IsUnique();
             entity.HasOne(artwork => artwork.Creator)
                 .WithMany(master => master.Artworks)

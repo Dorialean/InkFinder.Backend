@@ -3,6 +3,7 @@ using System;
 using InkFinder.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace InkFinder.DAL.Migrations
 {
     [DbContext(typeof(InkFinderContext))]
-    partial class InkFinderContextModelSnapshot : ModelSnapshot
+    [Migration("20240411182917_IdentityUpdate")]
+    partial class IdentityUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace InkFinder.DAL.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("ArtworkEntity", (string)null);
+                    b.ToTable("ArtworkEntity");
                 });
 
             modelBuilder.Entity("InkFinder.DAL.Entities.TatooServiceEntity", b =>
@@ -71,7 +74,7 @@ namespace InkFinder.DAL.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("TatooService", (string)null);
+                    b.ToTable("TatooService");
 
                     b.HasData(
                         new
@@ -168,7 +171,7 @@ namespace InkFinder.DAL.Migrations
 
                     b.HasIndex("ServiceId");
 
-                    b.ToTable("TatooSignUp", (string)null);
+                    b.ToTable("TatooSignUp");
                 });
 
             modelBuilder.Entity("InkFinder.DAL.Entities.UserEntity", b =>
@@ -276,7 +279,7 @@ namespace InkFinder.DAL.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("WorkSheet", (string)null);
+                    b.ToTable("WorkSheet");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -9,7 +9,7 @@ public class WorkSheetEntity
     [Required]
     public Guid Id { get; set; }
     [Required]
-    public Guid UserId { get; set; }
+    public string UserId { get; set; }
     public virtual UserEntity User { get; set; } = null!;
     [Required]
     public string Title { get; set; } = null!;

@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InkFinder.DAL.Entities;
 
+[Table("Artwork")]
 public class ArtworkEntity
 {
     [Required]
@@ -9,7 +11,7 @@ public class ArtworkEntity
     [Required]
     public string Name { get; set; } = null!;
     [Required]
-    public required string Link { get; set; }
-    public Guid? CreatorId { get; set; }
+    public string Link { get; set; } = null!;
+    public string? CreatorId { get; set; }
     public virtual UserEntity? Creator { get; set; }
 }
